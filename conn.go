@@ -34,7 +34,7 @@ func (p *quicConn) SetCounter(c *core.TrafficCounter) {
 	p.counter = c
 }
 
-func (p *quicConn) Read() (f core.Frame, err error) {
+func (p *quicConn) Read() (f core.BufferedFrame, err error) {
 	raw, err := p.decoder.Read()
 	if err == io.EOF {
 		return
