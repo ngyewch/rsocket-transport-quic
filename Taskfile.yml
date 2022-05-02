@@ -1,0 +1,22 @@
+version: '3'
+
+tasks:
+  clean:
+    desc: Clean
+    cmds:
+      - rm -rf dist
+
+  build:
+    desc: Build
+    cmds:
+      - go build ./...
+
+  test:
+    desc: Test
+    cmds:
+      - go test ./...
+
+  dependencyUpdates:
+    desc: Show dependency updates
+    cmds:
+      - go list -u -m -json all | docker run --rm -i psampaz/go-mod-outdated -update -direct
